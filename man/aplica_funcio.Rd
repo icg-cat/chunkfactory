@@ -2,26 +2,26 @@
 % Please edit documentation in R/aplica_funcio.R
 \name{aplica_funcio}
 \alias{aplica_funcio}
-\title{selecciona i aplica la funció d'anàlisi a executar.}
+\title{select and execute analysis function for bivariate descriptive analysis}
 \usage{
 aplica_funcio(param)
 }
 \arguments{
-\item{param}{vector de paràmetres per la funció. Creat al pas anterior}
+\item{param}{vector of parametres for the function.}
 }
 \value{
-vector caràcter amb el codi a executar, amb els noms de les variables a utilitzar
+character vector caracter with the code to be executed.
 }
 \description{
-segona peça de la fàbrica de chunks. Tria la funció a aplicar segons si les variables dependents són qualitatives o quantitatives.
+second piece in the chunk factory. Select the function according to the class of the dependent variable.
 }
 \examples{
-utils::data(package = "palmerpenguins", "penguins")
+data(package = "palmerpenguins", "penguins")
 param <- expand.grid(
   dades = "penguins",
-  VD    = c("bill_length_mm", "bill_depth_mm"),
   VI    = c("island"),
-  pes   = NULL) \%>\%
+  VD    = c("bill_length_mm", "bill_depth_mm"),
+  pes   = "pes") \%>\%
   lapply(., function(x){as.list(as.character(x))})
 aplica_funcio(param)
 }
