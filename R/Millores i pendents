@@ -1,0 +1,7 @@
+
+podria estar bé afegir el valor de chi2 i VdC a les taules de contingència
+
+  sjstats::cramer(table(penguins$species, penguins$island))
+  chisq.test(x = penguins$species, y = penguins$island)
+
+

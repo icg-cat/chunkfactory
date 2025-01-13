@@ -1,0 +1,66 @@
+---
+title: "plantilla - chunkfactory"
+author: "irene cruz"
+date: "`r format(Sys.time(), '%d-%m-%y')`"
+output:
+  html_document:
+    keep_md: true
+    df_print: paged
+    highlight: tango
+    code_folding: hide
+    number_sections: true
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+# Objectives
+The package `chunkfactory`is meant to facilitate the production of documents for the exploration of bivariate descriptive statistics. 
+
+It solves 2 questions: 
+- repetitive code 
+- presenting figures when repeating functions on a list
+
+# Examples
+```{r}
+library(chunkfactory)
+library(tidyverse)
+```
+
+```{r}
+utils::data(package = "palmerpenguins", "penguins")
+penguins$pes <- 1
+```
+
+## Bivariates by sex {.tabset}
+```{r}
+myres <- fabrica_chunks(
+  vd = c("bill_length_mm", "bill_depth_mm", "flipper_length_mm"), 
+  vi = c("sex"), 
+  d = "penguins", 
+  w = "pes")
+```
+
+`myres` generates a vector character containing the code that will be later evaluated with `knit_child` 
+
+`r knitr::knit_child(text = unlist(myres))`
+
+
+## Bivariates by island {.tabset}
+```{r}
+myres <- fabrica_chunks(
+  vd = c("sex", "species"), 
+  vi = c("island"), 
+  d = "penguins", 
+  w = "pes")
+```
+
+`r knitr::knit_child(text = unlist(myres))`
+
