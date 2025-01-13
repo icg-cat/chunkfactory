@@ -1,17 +1,18 @@
-#' selecciona i aplica la funció d'anàlisi a executar.
-#' @description segona peça de la fàbrica de chunks. Tria la funció a aplicar segons si les variables dependents són qualitatives o quantitatives.
-#' @param param vector de paràmetres per la funció. Creat al pas anterior
+#' select and execute analysis function for bivariate descriptive analysis
 #'
-#' @return vector caràcter amb el codi a executar, amb els noms de les variables a utilitzar
+#' @description second piece in the chunk factory. Select the function according to the class of the dependent variable.
+#' @param param vector of parametres for the function.
+#'
+#' @return character vector caracter with the code to be executed.
 #' @export
 #'
 #' @examples
-#' utils::data(package = "palmerpenguins", "penguins")
+#' data(package = "palmerpenguins", "penguins")
 #' param <- expand.grid(
 #'   dades = "penguins",
-#'   VD    = c("bill_length_mm", "bill_depth_mm"),
 #'   VI    = c("island"),
-#'   pes   = NULL) %>%
+#'   VD    = c("bill_length_mm", "bill_depth_mm"),
+#'   pes   = "pes") %>%
 #'   lapply(., function(x){as.list(as.character(x))})
 #' aplica_funcio(param)
 aplica_funcio <- function(param){
@@ -33,7 +34,7 @@ aplica_funcio <- function(param){
   # identifica classe de la primera VD
   myfunc <- ifelse(is.factor(get(param$dades[[1]])[[param$VD[[1]]]]), mytab_txt, quant_txt)
 
-  # assigna funció i executa
+  # assigna funcio i executa
   reslist_mytab <- purrr::pmap(param, myfunc)
   names(reslist_mytab) <- paste(param$VD, "x", param$VI)
 

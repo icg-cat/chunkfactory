@@ -1,17 +1,18 @@
-#' fàbrica de codi per analitzar variables numèriques
+#' code factory to analyse numerical variables.
 #'
-#' @param dades nom del conjunt de dades a analitzar, com a cadena de caràcters
-#' @param VD nom, o conjunt de noms, de les variables dependents
-#' @param VI nom, o conjunt de noms, de les variables independents
-#' @param pes nom de la variable de ponderació. Si no existeix, s'assigna 1
+#' @param dades character vector with the name of the dataset
+#' @param VI character vector with the name of the independent variable
+#' @param VD character vector with the name of the dependent variable
+#' @param pes character vector with the name of the weighting variable
 #'
-#' @return llista amb el codi per executar la taula d'estadístics escriptius i el diagrama de caixes
+#' @return list with the code to execute a table of descriptive statistics and grouped boxplots.
 #' @export
 #'
 #' @examples
 #' data(package = "palmerpenguins", "penguins")
-#' quant_txt("penguins", "island", VI = c("body_mass_g", "bill_length_mm"))
-quant_txt <- function(dades, VD, VI, pes){
+#' penguins$pes <- 1
+#' quant_txt("penguins", "island", VD = c("body_mass_g", "bill_length_mm"), "pes")
+quant_txt <- function(dades, VI, VD, pes){
   tau <- glue::glue(
     "tab <-
   {dades} %>%
@@ -31,15 +32,15 @@ quant_txt <- function(dades, VD, VI, pes){
 
   pp <- glue::glue(
     'p <- {dades} %>%
-    ggplot(.,
-           aes( x = {VI},
+    ggplot2::ggplot(.,
+      ggplot2::aes( x = {VI},
                 y = {VD},
                 weight = pes)) +
-    geom_boxplot() +
-    expand_limits(y = 0) +
-    coord_flip() +
-    theme_minimal() +
-    labs(
+    ggplot2::geom_boxplot() +
+    ggplot2::expand_limits(y = 0) +
+    ggplot2::coord_flip() +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(
         title = paste0("{VD}", " segons ", "{VI}"),
         caption = "proves"
       )

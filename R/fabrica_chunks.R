@@ -1,19 +1,20 @@
-#' fabrica els chunks, amb els seus títols, chunks i codi
+#' fabricate chunks, with section titles, chunks delimitations, and code.
 #'
-#' @param vd vector de noms de les variables dependents
-#' @param vi vector de noms de les variables independents
-#' @param d nom de les dades, com a cadena de caràcter
-#' @param w nom de la variable de ponderació
+#' @param d character vector with name of dataset
+#' @param vi character vector with name of independent variable
+#' @param vd character vector with name of dependent variable
+#' @param w character vector with name of weighting variable
 #'
 #' @return markdown per generar seccions (sota títol 3), chunks i codi que serà posteriorment renderitzat en un rmd.
 #' @export
 #'
 #' @examples
 #' utils::data(package = "palmerpenguins", "penguins")
-#' fabrica_chunks(c("sex", "species"), c("island"), "penguins")
-fabrica_chunks <- function(vd, vi, d, w){
+#' penguins$pes <- 1
+#' fabrica_chunks("penguins", c("sex", "species"), c("island"), "pes")
+fabrica_chunks <- function(d, vi, vd, w){
   # defineix els paràmetres per alimentar a la funció d'anàlisi
-  param <- fes_param_list(vd, vi, d, w)
+  param <- fes_param_list(d = d, vi = vi, vd = vd, w = w)
   # extreu resultats en llista
   reslist_mytab <- aplica_funcio(param)
   # extreu el codi amb resultats

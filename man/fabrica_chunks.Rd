@@ -2,26 +2,27 @@
 % Please edit documentation in R/fabrica_chunks.R
 \name{fabrica_chunks}
 \alias{fabrica_chunks}
-\title{fabrica els chunks, amb els seus títols, chunks i codi}
+\title{fabricate chunks, with section titles, chunks delimitations, and code.}
 \usage{
-fabrica_chunks(vd, vi, d, w)
+fabrica_chunks(d, vi, vd, w)
 }
 \arguments{
-\item{vd}{vector de noms de les variables dependents}
+\item{d}{character vector with name of dataset}
 
-\item{vi}{vector de noms de les variables independents}
+\item{vi}{character vector with name of independent variable}
 
-\item{d}{nom de les dades, com a cadena de caràcter}
+\item{vd}{character vector with name of dependent variable}
 
-\item{w}{nom de la variable de ponderació}
+\item{w}{character vector with name of weighting variable}
 }
 \value{
 markdown per generar seccions (sota títol 3), chunks i codi que serà posteriorment renderitzat en un rmd.
 }
 \description{
-fabrica els chunks, amb els seus títols, chunks i codi
+fabricate chunks, with section titles, chunks delimitations, and code.
 }
 \examples{
 utils::data(package = "palmerpenguins", "penguins")
-fabrica_chunks(c("sex", "species"), c("island"), "penguins")
+penguins$pes <- 1
+fabrica_chunks("penguins", c("sex", "species"), c("island"), "pes")
 }

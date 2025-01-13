@@ -2,25 +2,27 @@
 % Please edit documentation in R/escriu_codi.R
 \name{escriu_codi}
 \alias{escriu_codi}
-\title{funció que escriu codi dins d'un chunk, i amb títols 3 per cada secció}
+\title{function that writes markdown and code}
 \usage{
-escriu_codi(reslist_mytab)
+escriu_codi(reslist_mytab, title_level = 3)
 }
 \arguments{
-\item{reslist_mytab}{llista de resultats d'aplicar la fàbrica de codi, a les passes anteriors}
+\item{reslist_mytab}{list of results produced by code factories in previous steps}
+
+\item{title_level}{level of the titles for the sections. Defaults to Header 3}
 }
 \value{
-vector caràcter amb el markdown i el codi que han d'interpretar-se posteriorment per  knitr::knit_child(text = unlist(src))
+character vector containing the markup and code later interpreted by knitr::knit_child(text = unlist(src))
 }
 \description{
-funció que escriu codi dins d'un chunk, i amb títols 3 per cada secció
+function that writes markdown and code
 }
 \examples{
 utils::data(package = "palmerpenguins", "penguins")
-# defineix els paràmetres per alimentar a la funció d'anàlisi
+# define function parameters
 param <- fes_param_list(c("species"), c("island"), "penguins")
-# extreu resultats en llista
+# extract results into a list
 reslist_mytab <- aplica_funcio(param)
-# extreu el codi amb resultats
+# extract code with results
 src <- escriu_codi(reslist_mytab)
 }

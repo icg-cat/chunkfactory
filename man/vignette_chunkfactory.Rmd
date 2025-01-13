@@ -5,8 +5,8 @@ date: "`r format(Sys.time(), '%d-%m-%y')`"
 output:
   html_document:
     df_print: paged
+    code_folding: show
     highlight: tango
-    code_folding: hide
     number_sections: true
     toc: true
     toc_float:
@@ -17,17 +17,12 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(
+  echo = TRUE, 
+  message = FALSE, 
+  warning = FALSE)
 ```
 
-# Objectives
-The package `chunkfactory`is meant to facilitate the production of documents for the exploration of bivariate descriptive statistics. 
-
-It solves 2 questions: 
-- repetitive code 
-- presenting figures when repeating functions on a list
-
-# Examples
 ```{r}
 library(chunkfactory)
 library(tidyverse)
@@ -37,6 +32,99 @@ library(tidyverse)
 utils::data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
 ```
+
+
+# Objectives
+The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively. This could facilitate, for instance, the production of documents for the exploration of bivariate descriptive statistics. 
+
+It solves 2 problems: 
+
+* repetitive code when performing the same operations on multiple combinations of variables
+* presenting figures and tables in RMD when repeating functions on a list
+
+The chunk factory can be applied to custom functions, or can be used with the built-in descriptive statistics functions for weighted data. Let's see the two cases. 
+
+# Execute any function as a chunk factory {.tabset}
+
+1. We can use the chunk factory on any custom function that generates the collection of results we need. The only restriction is that the `data` argument needs to be passed as a **text string**. Then the function needs to evaluate the text string. 
+
+For example, we'll build a function that, for every pair of variables returns: 
+
+* a linear regression model
+* a formatted table of model results
+* a tibble of model coefficients
+* a predicted means plot
+
+```{r}
+myfunc <- function(data_name, v1, v2){
+  data <- get(data_name)
+  
+  myformula <- as.formula(glue::glue("{v1} ~ {v2}"))
+  res1 <- lm(myformula, data = data)
+  res2 <- sjPlot::tab_model(res1, use.viewer = F)
+  res3 <- broom::tidy(res1)
+  res4 <- sjPlot::plot_model(res1, type = "eff", terms = v2)
+  
+  return(list(res1, res2, res3, res4))
+}
+```
+
+
+If we were to simply execute `myfunc()`and get the list of results it produces as is, we'd find each element is preceded by the aesthetically unpleasant `[[x]]`, and table outputs are not printed following document guidelines (i.e. paged data frames): 
+
+```{r}
+myfunc("penguins", "flipper_length_mm", "species")
+
+```
+
+chunkfactory will help us reproduce results in an optimal way for a rmd document, while minimising the iteration of code. 
+
+2. In order to create a chunk factory, first we'll need to define a list of parameters to iterate upon. Remember that the parameters need to be named exactly as the function arguments' names, and follow the same order: 
+
+```{r}
+myfunc_params <- list(
+  data_name = "penguins", 
+  v1        = c("flipper_length_mm", "bill_length_mm"),
+  v2        = c("species", "island", "sex")
+  )
+```
+
+Next we'll only need to execute our custom function with our list of parameters: 
+
+```{r}
+myres <- fabrica_chunks_myfunc(
+  myfunc = myfunc, 
+  param_list = myfunc_params, 
+  title_level = 2)
+```
+
+This generates a character vector containing the markdown, chunks and code to be evaluated. See a sample:
+
+```{r}
+head(myres)
+```
+
+3. The list of results is then interpreted by `knit_child()`, like in the previous example:
+
+`r knitr::knit_child(text = unlist(myres))`
+
+
+
+# Examples with built-in functions
+
+The package includes built-in functions in order to perform bivariate analyses with weighted data. 
+
+If the dependent variable is numeric, results will show: 
+
+* grouped descriptive statistics
+* grouped boxplots
+
+If the dependent variable is categorical, results will show:
+
+* a cross-tab in tidy format, including adjusted-standardized residuals [citation]
+* stacked bar chart
+
+Results are organized into tabsets, like in the following example: 
 
 ## Bivariates by sex {.tabset}
 ```{r}
@@ -62,4 +150,3 @@ myres <- fabrica_chunks(
 ```
 
 `r knitr::knit_child(text = unlist(myres))`
-

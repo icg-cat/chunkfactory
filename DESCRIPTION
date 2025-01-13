@@ -1,11 +1,12 @@
 Package: chunkfactory
 Type: Package
-Title: What the Package Does (Title Case)
+Title: The package `chunkfactory`is meant to facilitate the production of documents for the exploration of bivariate descriptive statistics. 
 Version: 1.2.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Irene Cruz Gómez
+Maintainer: <irene.cruz@institutmetropoli.cat>
+Description: It solves 2 questions: 
+    - repetitive code 
+    - presenting figures when repeating functions on a list
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

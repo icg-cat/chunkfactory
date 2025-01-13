@@ -1,21 +1,22 @@
-#' @description Calcula una taula de contingència amb residus ajustats estandarditzats, fent servir NSE. Es donen només els % sobre els marginals de la VI.
-#' @title taula de contingència a mida
-#' @param dades dades
-#' @param VD variable dependent (NSE)
-#' @param VI variable independent (NSE)
-#' @param pes pes (NSE)
+#' @description Compute a crosstaband add adjusted standardized residuals. Percentages are only computed using independent variable marginals.
+#' @title tailored cross tabulation
+#' @param dades dataset
+#' @param VI name of the independent variable
+#' @param VD name of the dependent variable
+#' @param pes name of the weighting variable
 #'
-#' @return una tibble amb els recomptes (n), els recomptes ponderats (N), els totals de VI (TT), els percentatges (PP) i els residus ajustats estandarditzats
+#' @return a tibble including counts (n), weighted counts (N), marginals of the independent variable (TT), percentages within independent variable groups (PP = N/TT*100), and adjusted standardized residuals.
 #' @export
 #'
 #' @examples
 #'data(package = "palmerpenguins", "penguins")
 #'penguins$pes <- 1
-#'mycrosstab(penguins, island, sex, pes)
+#'mycrosstab(penguins, "island", "sex", "pes")
 
-mycrosstab <- function(dades, VD, VI, pes){
-  r1 <- fes_taula_nse(dades, VD, VI, pes)
-  r2 <- computa_residusAS_nse(dades, VI, VD, pes)
+mycrosstab <- function(dades, VI, VD, pes){
+  # browser()
+  r1 <- fes_taula(dades, VI, VD, pes)
+  r2 <- computa_residusAS(dades, VI, VD, pes)
 
   r3 <- dplyr::left_join(r1, r2) %>%
     tidyr::separate("key1", into = c("VI", "VD"))

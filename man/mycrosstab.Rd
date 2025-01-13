@@ -2,27 +2,27 @@
 % Please edit documentation in R/mycrosstab.R
 \name{mycrosstab}
 \alias{mycrosstab}
-\title{taula de contingència a mida}
+\title{tailored cross tabulation}
 \usage{
-mycrosstab(dades, VD, VI, pes)
+mycrosstab(dades, VI, VD, pes)
 }
 \arguments{
-\item{dades}{dades}
+\item{dades}{dataset}
 
-\item{VD}{variable dependent (NSE)}
+\item{VI}{name of the independent variable}
 
-\item{VI}{variable independent (NSE)}
+\item{VD}{name of the dependent variable}
 
-\item{pes}{pes (NSE)}
+\item{pes}{name of the weighting variable}
 }
 \value{
-una tibble amb els recomptes (n), els recomptes ponderats (N), els totals de VI (TT), els percentatges (PP) i els residus ajustats estandarditzats
+a tibble including counts (n), weighted counts (N), marginals of the independent variable (TT), percentages within independent variable groups (PP = N/TT*100), and adjusted standardized residuals.
 }
 \description{
-Calcula una taula de contingència amb residus ajustats estandarditzats, fent servir NSE. Es donen només els % sobre els marginals de la VI.
+Compute a crosstaband add adjusted standardized residuals. Percentages are only computed using independent variable marginals.
 }
 \examples{
 data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
-mycrosstab(penguins, island, sex, pes)
+mycrosstab(penguins, "island", "sex", "pes")
 }

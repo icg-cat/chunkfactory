@@ -2,26 +2,27 @@
 % Please edit documentation in R/mytab_txt.R
 \name{mytab_txt}
 \alias{mytab_txt}
-\title{Fàbrica de codi per analitzar variables categòriques}
+\title{Code factory for the analysis of categorical variables.}
 \usage{
-mytab_txt(dades, VD, VI, pes)
+mytab_txt(dades, VI, VD, pes)
 }
 \arguments{
-\item{dades}{nom del conjunt de dades a analitzar, com a cadena de caràcters}
+\item{dades}{character string with the name of the dataset.}
 
-\item{VD}{nom, o conjunt de noms, de les variables dependents}
+\item{VI}{character string with the names of the independent variables}
 
-\item{VI}{nom, o conjunt de noms, de les variables independents}
+\item{VD}{character string with the names of the dependent variables}
 
-\item{pes}{nom de la variable de ponderació. Si no existeix, s'assigna 1}
+\item{pes}{character string with the names of the weighting variables.}
 }
 \value{
-llista amb el codi per executar la taula de freqüències i el diagrama de barres
+list with the code to execute a crosstab and a stacked bar chart.
 }
 \description{
-Fàbrica de codi per analitzar variables categòriques
+Code factory for the analysis of categorical variables.
 }
 \examples{
 data(package = "palmerpenguins", "penguins")
-mytab_txt("penguins", "island", "species")
+penguins$pes <- 1
+mytab_txt("penguins", "island", "species", "pes")
 }

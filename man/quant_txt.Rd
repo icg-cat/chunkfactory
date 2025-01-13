@@ -2,26 +2,27 @@
 % Please edit documentation in R/quant_txt.R
 \name{quant_txt}
 \alias{quant_txt}
-\title{fàbrica de codi per analitzar variables numèriques}
+\title{code factory to analyse numerical variables.}
 \usage{
-quant_txt(dades, VD, VI, pes)
+quant_txt(dades, VI, VD, pes)
 }
 \arguments{
-\item{dades}{nom del conjunt de dades a analitzar, com a cadena de caràcters}
+\item{dades}{character vector with the name of the dataset}
 
-\item{VD}{nom, o conjunt de noms, de les variables dependents}
+\item{VI}{character vector with the name of the independent variable}
 
-\item{VI}{nom, o conjunt de noms, de les variables independents}
+\item{VD}{character vector with the name of the dependent variable}
 
-\item{pes}{nom de la variable de ponderació. Si no existeix, s'assigna 1}
+\item{pes}{character vector with the name of the weighting variable}
 }
 \value{
-llista amb el codi per executar la taula d'estadístics escriptius i el diagrama de caixes
+list with the code to execute a table of descriptive statistics and grouped boxplots.
 }
 \description{
-fàbrica de codi per analitzar variables numèriques
+code factory to analyse numerical variables.
 }
 \examples{
 data(package = "palmerpenguins", "penguins")
-quant_txt("penguins", "island", VI = c("body_mass_g", "bill_length_mm"))
+penguins$pes <- 1
+quant_txt("penguins", "island", VD = c("body_mass_g", "bill_length_mm"), "pes")
 }

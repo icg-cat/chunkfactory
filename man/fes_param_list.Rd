@@ -2,25 +2,26 @@
 % Please edit documentation in R/fes_param_list.R
 \name{fes_param_list}
 \alias{fes_param_list}
-\title{Defineix paràmetres per l'anàlisi}
+\title{Define a list of parameters for descriptive statistics functions, in the order needed by the followong functions, notably purrr::pmap.}
 \usage{
-fes_param_list(vd, vi, d, w)
+fes_param_list(d, vi, vd, w)
 }
 \arguments{
-\item{vd}{nom o vector de noms de les variables dependents}
+\item{d}{name of the dataset}
 
-\item{vi}{nom o vector de noms de les variables independents}
+\item{vi}{name of the independent variable}
 
-\item{d}{nom del conjunt de dades}
+\item{vd}{name of the dependent variable}
 
-\item{w}{nom de la variable de ponderació}
+\item{w}{name of the weighting variable}
 }
 \value{
-llista amb els noms i l'ordre dels arguments tal i com ho requereix purrr::pmap i les funcions d'anàlisi
+list with all the combinations of the different elements
 }
 \description{
-Defineix paràmetres per l'anàlisi
+Define a list of parameters for descriptive statistics functions, in the order needed by the followong functions, notably purrr::pmap.
 }
 \examples{
-fes_param_list(c("bill_length_mm", "bill_depth_mm"), c("species"), "penguins")
+fes_param_list("penguins", c("species"), c("bill_length_mm", "bill_depth_mm"), w = "pes")
+
 }

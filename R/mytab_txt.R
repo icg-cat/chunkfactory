@@ -1,48 +1,48 @@
-#' Fàbrica de codi per analitzar variables categòriques
+#' Code factory for the analysis of categorical variables.
 #'
-#' @param dades nom del conjunt de dades a analitzar, com a cadena de caràcters
-#' @param VD nom, o conjunt de noms, de les variables dependents
-#' @param VI nom, o conjunt de noms, de les variables independents
-#' @param pes nom de la variable de ponderació. Si no existeix, s'assigna 1
+#' @param dades character string with the name of the dataset.
+#' @param VI character string with the names of the independent variables
+#' @param VD character string with the names of the dependent variables
+#' @param pes character string with the names of the weighting variables.
 #'
-#' @return llista amb el codi per executar la taula de freqüències i el diagrama de barres
+#' @return list with the code to execute a crosstab and a stacked bar chart.
 #' @export
 #'
 #' @examples
 #'data(package = "palmerpenguins", "penguins")
-#'mytab_txt("penguins", "island", "species")
-mytab_txt <- function(dades, VD, VI, pes){
-
+#'penguins$pes <- 1
+#'mytab_txt("penguins", "island", "species", "pes")
+mytab_txt <- function(dades, VI, VD, pes){
+  # browser()
   tau <- glue::glue(
-    'tb <- mycrosstab({dades}, {VI}, {VD}, {pes})
+    'tb <- mycrosstab({dades}, "{VI}", "{VD}", "{pes}")
     tb'
   )
 
   plot <- glue::glue(
     ' p <- tb %>%
-        ggplot(.,
-           aes(
-             x =  {VI},
+        ggplot2::ggplot(.,
+          ggplot2::aes(
+             x =  VI,
              y = PP,
-             fill = {VD}
+             fill = VD
            )) +
-      geom_bar(
+      ggplot2::geom_bar(
         stat = "identity",
         position = "fill"
       ) +
-      scale_y_continuous(labels = scales::percent) +
-      coord_flip() +
-      theme_light() +
-      labs(
+      ggplot2::scale_y_continuous(labels = scales::percent) +
+      ggplot2::coord_flip() +
+      ggplot2::theme_light() +
+      ggplot2::labs(
         title = paste0("{VD}", " segons ", "{VI}"),
         x = "\n",
         y = "(%)",
-        caption = "proves",
         fill = NULL
       ) +
-  guides(fill = guide_legend(ncol = 2, position = "bottom",
+  ggplot2::guides(fill = guide_legend(ncol = 2, position = "bottom",
           direction = "vertical")) +
-  scale_fill_manual(
+  ggplot2::scale_fill_manual(
   values = colorRampPalette(RColorBrewer ::brewer.pal(11, "Spectral"))(11)
   )
 
@@ -52,58 +52,3 @@ mytab_txt <- function(dades, VD, VI, pes){
 
   return(list(tau, plot))
 }
-
-
-# mytab_txt <- function(dades, VD, VI, pes){
-#
-#   tau <- glue::glue(
-#     'tb <- {dades} %>%
-#     select(pes, {VD}, {VI}) %>%
-#     filter(complete.cases(.)) %>%
-#     group_by({VI}) %>%
-#     mutate(TT = sum(pes),
-#            tt = n()) %>%
-#     group_by({VD}, .add = T) %>%
-#     summarise(
-#       N = sum(pes),
-#       n = n(),
-#       TT = unique(TT),
-#       PP = round(N/TT*100, 2)
-#    )
-#   tb'
-#   )
-#
-#   plot <- glue::glue(
-#     ' p <- tb %>%
-#         ggplot(.,
-#            aes(
-#              x =  {VI},
-#              y = PP,
-#              fill = {VD}
-#            )) +
-#       geom_bar(
-#         stat = "identity",
-#         position = "fill"
-#       ) +
-#       scale_y_continuous(labels = scales::percent) +
-#       coord_flip() +
-#       theme_light() +
-#       labs(
-#         title = paste0("{VD}", " segons ", "{VI}"),
-#         x = "\n",
-#         y = "(%)",
-#         caption = "CISEELAP - 2024",
-#         fill = NULL
-#       ) +
-#   guides(fill = guide_legend(ncol = 2, position = "bottom",
-#           direction = "vertical")) +
-#   scale_fill_manual(
-#   values = colorRampPalette(RColorBrewer ::brewer.pal(11, "Spectral"))(11)
-#   )
-#
-#   p
-#   '
-#   )
-#
-#   return(list(tau, plot))
-# }
