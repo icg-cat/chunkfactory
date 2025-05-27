@@ -289,8 +289,7 @@ eval(parse(text = 'reslist[[2]][[3]]'))
 eval(parse(text = 'reslist[[2]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
-
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-20-1.png" width="75%" />
 
 
 
@@ -372,8 +371,8 @@ eval(parse(text = 'reslist[[3]][[3]]'))
 eval(parse(text = 'reslist[[3]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
 
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-21-1.png" width="75%" />
 
 
 
@@ -455,7 +454,7 @@ eval(parse(text = 'reslist[[4]][[3]]'))
 eval(parse(text = 'reslist[[4]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-22-1.png" width="75%" />
 
 
 
@@ -531,7 +530,7 @@ eval(parse(text = 'reslist[[5]][[3]]'))
 eval(parse(text = 'reslist[[5]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-23-1.png" width="75%" />
 
 
 
@@ -607,7 +606,7 @@ eval(parse(text = 'reslist[[6]][[3]]'))
 eval(parse(text = 'reslist[[6]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-24-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-24-1.png" width="75%" />
 
 
 
@@ -664,7 +663,7 @@ eval(parse(text = (reslist_mytab[[1]][[1]])))
 eval(parse(text = (reslist_mytab[[1]][[2]])))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-33-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-33-1.png" width="75%" />
 
 
 
@@ -689,8 +688,7 @@ eval(parse(text = (reslist_mytab[[2]][[1]])))
 eval(parse(text = (reslist_mytab[[2]][[2]])))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-34-1.png)<!-- -->
-
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-34-1.png" width="75%" />
 
 
 
@@ -714,7 +712,7 @@ eval(parse(text = (reslist_mytab[[3]][[1]])))
 eval(parse(text = (reslist_mytab[[3]][[2]])))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-35-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-35-1.png" width="75%" />
 
 
 
@@ -755,7 +753,7 @@ eval(parse(text = (reslist_mytab[[1]][[1]])))
 eval(parse(text = (reslist_mytab[[1]][[2]])))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-41-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-41-1.png" width="75%" />
 
 
 
@@ -782,6 +780,6 @@ eval(parse(text = (reslist_mytab[[2]][[1]])))
 eval(parse(text = (reslist_mytab[[2]][[2]])))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-42-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-42-1.png" width="75%" />
 
 
