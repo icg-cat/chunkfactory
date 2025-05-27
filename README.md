@@ -5,4 +5,5 @@ It solves 2 problems:
 * repetitive code when performing the same operations on multiple combinations of variables
 * presenting figures and tables in RMD when repeating functions on a list
 
-The chunk factory can be applied to custom functions, or can be used with the built-in descriptive statistics functions for weighted data. Let's see the two cases. 
+The chunk factory can be applied to custom functions, or can be used with the built-in descriptive statistics functions for weighted data.
+
