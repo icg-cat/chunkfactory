@@ -6,5 +6,5 @@
 .httr-oauth
 .DS_Store
 .quarto
-data-raw
-deprecated
+data-raw/
+deprecated/
