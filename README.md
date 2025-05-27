@@ -1,6 +1,6 @@
-title: "vignette - chunkfactory"
-author: "irene cruz"
-date: "27-05-25"
+# vignette - chunkfactory
+### author: "irene cruz"
+### date: "27-05-25"
 
 ``` r
 library(chunkfactory)
