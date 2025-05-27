@@ -82,7 +82,7 @@ myfunc("penguins", "flipper_length_mm", "species")
 ## [[4]]
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-4-1.png" width="75%" />
 
 chunkfactory will help us reproduce results in an optimal way for a rmd document, while minimising the iteration of code. 
 
@@ -206,8 +206,8 @@ eval(parse(text = 'reslist[[1]][[3]]'))
 eval(parse(text = 'reslist[[1]][[4]]'))
 ```
 
-![](vignette_chunkfactory_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
 
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-19-1.png" width="75%" />
 
 
 
