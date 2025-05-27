@@ -17,9 +17,11 @@ Imports:
     glue,
     knitr,
     magrittr,
+    palmerpenguins,
     purrr,
     questionr,
     rlang,
+    sjPlot,
     tidyr,
     tidyselect
 URL: https://github.com/icg-cat/chunkfactory

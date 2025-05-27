@@ -3,8 +3,7 @@ title: "vignette - chunkfactory"
 author: "irene cruz"
 date: "`r format(Sys.time(), '%d-%m-%y')`"
 output:
-  html_document:
-    df_print: paged
+  html_document: 
     code_folding: show
     highlight: tango
     number_sections: true
@@ -12,6 +11,7 @@ output:
     toc_float:
       collapsed: true
       smooth_scroll: true
+    keep_md: true
 editor_options: 
   chunk_output_type: console
 ---
