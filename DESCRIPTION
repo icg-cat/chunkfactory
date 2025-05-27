@@ -22,3 +22,5 @@ Imports:
     rlang,
     tidyr,
     tidyselect
+URL: https://github.com/icg-cat/chunkfactory
+BugReports: https://github.com/icg-cat/chunkfactory/issues
