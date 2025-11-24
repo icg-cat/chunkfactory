@@ -2,7 +2,7 @@
 ### author: "irene cruz"
 ### date: "27-05-25"
 
-<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/hex.png" width="75%" />
+<img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/hex.png" width="15%" />
 
 ``` r
 library(chunkfactory)
