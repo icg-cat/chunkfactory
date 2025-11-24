@@ -4,20 +4,11 @@
 
 <img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/hex.png" width="15%" />
 
-``` r
-library(chunkfactory)
-library(tidyverse)
-```
 
-
-``` r
-utils::data(package = "palmerpenguins", "penguins")
-penguins$pes <- 1
-```
 
 
 # Objectives
-The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively. This could facilitate, for instance, the production of documents for the exploration of bivariate descriptive statistics. 
+The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively.
 
 It solves 2 problems: 
 
@@ -25,6 +16,15 @@ It solves 2 problems:
 * presenting figures and tables in RMD when repeating functions on a list
 
 The chunk factory can be applied to custom functions, or can be used with the built-in descriptive statistics functions for weighted data. Let's see the two cases. 
+``` r
+library(chunkfactory)
+library(tidyverse)
+```
+
+``` r
+utils::data(package = "palmerpenguins", "penguins")
+penguins$pes <- 1
+```
 
 # Execute any function as a chunk factory {.tabset}
 
