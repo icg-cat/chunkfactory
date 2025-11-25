@@ -1,11 +1,10 @@
 # vignette - chunkfactory
-### author: "irene cruz"
-### date: "27-05-25"
+### author: irene cruz
+### date: 27-05-25
 
 <img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/hex.png" width="15%" />
 
-
-
+This package was developed in the context of the project [Igualdad de género en los usos del tiempo: Cambios, resistencias y continuidades](https://webs.uab.cat/genera/) (GENERA Proyecto PID2021-122515NB-I00). 
 
 # Objectives
 The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively.
