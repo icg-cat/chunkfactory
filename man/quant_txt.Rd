@@ -24,5 +24,5 @@ code factory to analyse numerical variables.
 \examples{
 data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
-quant_txt("penguins", "island", VD = c("body_mass_g", "bill_length_mm"), "pes")
+chunkfactory:::quant_txt("penguins", "island", VD = c("body_mass_g", "bill_length_mm"), "pes")
 }

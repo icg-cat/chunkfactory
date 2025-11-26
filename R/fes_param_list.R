@@ -6,11 +6,13 @@
 #' @param w name of the weighting variable
 #'
 #' @return list with all the combinations of the different elements
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' fes_param_list("penguins", c("species"), c("bill_length_mm", "bill_depth_mm"), w = "pes")
-#'
+#' }
 fes_param_list <- function(d, vi, vd, w){
   param <- expand.grid(
     dades = d,

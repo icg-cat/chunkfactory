@@ -24,5 +24,5 @@ Computes weighted crosstabs, including adjusted standardized residuals.
 \examples{
 data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
-computa_residusAS(data = penguins, VI = "species", VD = "sex", pes = "pes")
+chunkfactory:::computa_residusAS(data = penguins, VI = "species", VD = "sex", pes = "pes")
 }

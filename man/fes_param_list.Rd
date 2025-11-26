@@ -22,6 +22,7 @@ list with all the combinations of the different elements
 Define a list of parameters for descriptive statistics functions, in the order needed by the followong functions, notably purrr::pmap.
 }
 \examples{
+\dontrun{
 fes_param_list("penguins", c("species"), c("bill_length_mm", "bill_depth_mm"), w = "pes")
-
+}
 }

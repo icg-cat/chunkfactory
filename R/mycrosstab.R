@@ -6,12 +6,11 @@
 #' @param pes name of the weighting variable
 #'
 #' @return a tibble including counts (n), weighted counts (N), marginals of the independent variable (TT), percentages within independent variable groups (PP = N/TT*100), and adjusted standardized residuals.
-#' @export
 #'
 #' @examples
 #'data(package = "palmerpenguins", "penguins")
 #'penguins$pes <- 1
-#'mycrosstab(penguins, "island", "sex", "pes")
+#'chunkfactory:::mycrosstab(penguins, "island", "sex", "pes")
 
 mycrosstab <- function(dades, VI, VD, pes){
   # browser()

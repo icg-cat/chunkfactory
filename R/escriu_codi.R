@@ -4,16 +4,16 @@
 #' @param title_level level of the titles for the sections. Defaults to Header 3
 #'
 #' @return character vector containing the markup and code later interpreted by knitr::knit_child(text = unlist(src))
-#' @export
 #'
 #' @examples
 #' utils::data(package = "palmerpenguins", "penguins")
+#' penguins$pes <- 1
 #' # define function parameters
-#' param <- fes_param_list(c("species"), c("island"), "penguins")
+#' param <- fes_param_list("penguins", c("species"), c("island"), w = "pes")
 #' # extract results into a list
-#' reslist_mytab <- aplica_funcio(param)
+#' reslist_mytab <- chunkfactory:::aplica_funcio(param)
 #' # extract code with results
-#' src <- escriu_codi(reslist_mytab)
+#' src <- chunkfactory:::escriu_codi(reslist_mytab)
 escriu_codi <- function(reslist_mytab, title_level = 3){
   src <- purrr::map_chr(seq_along(reslist_mytab), ~ {
     tab_name <- names(reslist_mytab[.x])

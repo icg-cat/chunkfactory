@@ -17,11 +17,12 @@ second piece in the chunk factory. Select the function according to the class of
 }
 \examples{
 data(package = "palmerpenguins", "penguins")
+penguins$pes <- 1
 param <- expand.grid(
   dades = "penguins",
   VI    = c("island"),
   VD    = c("bill_length_mm", "bill_depth_mm"),
   pes   = "pes") \%>\%
   lapply(., function(x){as.list(as.character(x))})
-aplica_funcio(param)
+chunkfactory:::aplica_funcio(param)
 }

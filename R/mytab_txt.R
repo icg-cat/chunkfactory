@@ -6,12 +6,11 @@
 #' @param pes character string with the names of the weighting variables.
 #'
 #' @return list with the code to execute a crosstab and a stacked bar chart.
-#' @export
 #'
 #' @examples
 #'data(package = "palmerpenguins", "penguins")
 #'penguins$pes <- 1
-#'mytab_txt("penguins", "island", "species", "pes")
+#'chunkfactory:::mytab_txt("penguins", "island", "species", "pes")
 mytab_txt <- function(dades, VI, VD, pes){
   # browser()
   tau <- glue::glue(

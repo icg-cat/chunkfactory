@@ -4,7 +4,7 @@
 
 <img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/hex.png" width="15%" />
 
-This package was developed in the context of the project [Igualdad de género en los usos del tiempo: Cambios, resistencias y continuidades](https://webs.uab.cat/genera/) (GENERA Proyecto PID2021-122515NB-I00). 
+This package was developed in the context of the project [Igualdad de género en los usos del tiempo: Cambios, resistencias y continuidades](https://webs.uab.cat/genera/), GENERA Proyecto PID2021-122515NB-I00. 
 
 # Objectives
 The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively.
@@ -784,3 +784,11 @@ eval(parse(text = (reslist_mytab[[2]][[2]])))
 <img src="https://github.com/icg-cat/chunkfactory/blob/master/man/vignette_chunkfactory_files/figure-html/unnamed-chunk-42-1.png" width="75%" />
 
 
+The package `chunkfactory`is meant to minimize the coding for markdown documents where a handful of functions need to be executed iteratively. This could facilitate, for instance, the production of documents for the exploration of bivariate descriptive statistics. 
+
+It solves 2 problems: 
+
+* repetitive code when performing the same operations on multiple combinations of variables
+* presenting figures and tables in RMD when repeating functions on a list
+
+The chunk factory can be applied to custom functions, or can be used with the built-in descriptive statistics functions for weighted data.

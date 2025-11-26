@@ -24,5 +24,5 @@ Compute a crosstaband add adjusted standardized residuals. Percentages are only 
 \examples{
 data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
-mycrosstab(penguins, "island", "sex", "pes")
+chunkfactory:::mycrosstab(penguins, "island", "sex", "pes")
 }

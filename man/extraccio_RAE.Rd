@@ -18,5 +18,5 @@ he extret el codi de chisquare::chisquare(), que te altament verbose output, per
 \examples{
 data(package = "palmerpenguins", "penguins")
 mytab <- table(penguins$island, penguins$sex)
-computa.ASR(mytab)
+extraccio_RAE(mytab)
 }

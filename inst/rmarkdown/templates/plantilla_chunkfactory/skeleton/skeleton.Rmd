@@ -64,3 +64,48 @@ myres <- fabrica_chunks(
 
 `r knitr::knit_child(text = unlist(myres))`
 
+## Using custom functions
+
+We can use the chunk factory on any custom function that generates the collection of results we need. The only restriction is that the data argument needs to be passed as a text string. Then the function needs to evaluate the text string.
+For example, we'll build a function that, for every pair of variables returns:
+
+- a linear regression model
+- a formatted table of model results
+- a tibble of model coefficients
+- a predicted means plot
+
+```{r}
+myfunc <- function(data_name, v1, v2){
+  data <- get(data_name)
+  
+  myformula <- as.formula(glue::glue("{v1} ~ {v2}"))
+  res1 <- lm(myformula, data = data)
+  res2 <- sjPlot::tab_model(res1, use.viewer = F)
+  res3 <- broom::tidy(res1)
+  res4 <- sjPlot::plot_model(res1, type = "eff", terms = v2)
+  
+  return(list(res1, res2, res3, res4))
+}
+```
+
+Next, we'll need to define a list of parameters to iterate upon. Remember that the parameters need to be named exactly as the function arguments' names, and follow the same order:
+
+```{r}
+myfunc_params <- list(
+  data_name = "penguins", 
+  v1        = c("flipper_length_mm", "bill_length_mm"),
+  v2        = c("species", "island", "sex")
+  )
+```
+
+Now we're ready to execute our custom function with our list of parameters:
+```{r}
+myres <- fabrica_chunks_myfunc(
+  myfunc = myfunc, 
+  param_list = myfunc_params, 
+  title_level = 2)
+```
+
+The list of results is then interpreted by knit_child():
+
+`r knitr::knit_child(text = unlist(myres))`

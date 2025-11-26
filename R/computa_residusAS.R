@@ -6,12 +6,11 @@
 #' @param pes Weights variable, as character string
 #'
 #' @return tibble with 2 columns: key1 és la clau primària, una combinació de les categories de les VI & VD, ASres és el valor dels residus ajustats i estandarditzats, segons es calculen a chisquare::chisquare() "stand.res[i,j]/sqrt((1−sr[i]/n)∗(1−sc[j]/n)). Els resultats d'aquesta funció estan pensats per fer servir en combinació amb "
-#' @export
 #'
 #' @examples
 #' data(package = "palmerpenguins", "penguins")
 #' penguins$pes <- 1
-#' computa_residusAS(data = penguins, VI = "species", VD = "sex", pes = "pes")
+#' chunkfactory:::computa_residusAS(data = penguins, VI = "species", VD = "sex", pes = "pes")
 
 computa_residusAS <- function(data, VI, VD, pes){
   # fes una taula de freqüències ponderada

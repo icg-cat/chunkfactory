@@ -4,17 +4,18 @@
 #' @param param vector of parametres for the function.
 #'
 #' @return character vector caracter with the code to be executed.
-#' @export
 #'
 #' @examples
 #' data(package = "palmerpenguins", "penguins")
+#' penguins$pes <- 1
 #' param <- expand.grid(
 #'   dades = "penguins",
 #'   VI    = c("island"),
 #'   VD    = c("bill_length_mm", "bill_depth_mm"),
 #'   pes   = "pes") %>%
 #'   lapply(., function(x){as.list(as.character(x))})
-#' aplica_funcio(param)
+#' chunkfactory:::aplica_funcio(param)
+
 aplica_funcio <- function(param){
   # browser()
   # checks integritat dades

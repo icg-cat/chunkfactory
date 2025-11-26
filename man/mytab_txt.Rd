@@ -24,5 +24,5 @@ Code factory for the analysis of categorical variables.
 \examples{
 data(package = "palmerpenguins", "penguins")
 penguins$pes <- 1
-mytab_txt("penguins", "island", "species", "pes")
+chunkfactory:::mytab_txt("penguins", "island", "species", "pes")
 }

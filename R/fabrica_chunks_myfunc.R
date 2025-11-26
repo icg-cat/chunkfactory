@@ -21,46 +21,46 @@
 fabrica_chunks_myfunc <- function(myfunc, param_list, title_level = 3){
 
   #1. define parameters
-  param <- expand.grid(
+  param <- base::expand.grid(
     param_list
   )
-  param <- lapply(param, function(x){
-    as.list(as.character(x))
+  param <- base::lapply(param, function(x){
+    base::as.list(base::as.character(x))
   })
 
   # param_length <- length(param_list)
 
 
   #2. extract function results into a list
-  args_param    <- names(param_list)
-  args_function <- formalArgs(myfunc)
+  args_param    <- base::names(param_list)
+  args_function <- methods::formalArgs(myfunc)
 
-  if(!(all(args_param %in% args_function))) stop("Thre's a mismatch between the arguments passed to the list of parameters and the arguments of the function that was given. Please verify: 1) if the function is not custom, precede it with the name of the package; 2) review case & spelling of the names of the arguments in the parameter list, to make shure they match exactly the spelling and order in the function. ")
+  if(!(base::all(args_param %in% args_function))) stop("Thre's a mismatch between the arguments passed to the list of parameters and the arguments of the function that was given. Please verify: 1) if the function is not custom, precede it with the name of the package; 2) review case & spelling of the names of the arguments in the parameter list, to make shure they match exactly the spelling and order in the function. ")
 
   reslist <- purrr::pmap(param, myfunc)
-  name_grid <- do.call("cbind", param) %>%
-                data.frame() %>%
+  name_grid <- base::do.call("cbind", param) %>%
+                base::data.frame() %>%
                 tidyr::unite(col = "noms", sep = ".") %>%
                 dplyr::pull(noms)
-  names(reslist) <- name_grid
+  base::names(reslist) <- name_grid
 
   # desa reslist al Global.env
-  assign("reslist", reslist, envir = .GlobalEnv)
+  base::assign("reslist", reslist, envir = .GlobalEnv)
 
   # 3. escriu codi chunks ---------------------------------------------------
 
   src <- purrr::map_chr(seq_along(reslist), ~ {
       # browser()
 
-    nivells_sublist <- length(reslist[[.x]])
+    nivells_sublist <- base::length(reslist[[.x]])
 
-    tab_name <- names(reslist[.x])
+    tab_name <- base::names(reslist[.x])
 
-    evals <- unlist(lapply(seq_along(1:nivells_sublist), function(i){
+    evals <- base::unlist(base::lapply(base::seq_along(1:nivells_sublist), function(i){
       glue::glue("eval(parse(text = 'reslist[[{.x}]][[{i}]]'))")
     }))
 
-    n_hash <- paste0(rep("#", title_level), collapse="")
+    n_hash <- base::paste0(rep("#", title_level), collapse="")
 
     knitr::knit_expand(text = c(
       "\n",

@@ -4,12 +4,13 @@
 #' @param mytab crosstab with absolute frequencies, as produced by table(), or questionr::wtd.table()
 #'
 #' @return table containing a primary key and AER.
+#'
 #' @export
 #'
 #' @examples
 #' data(package = "palmerpenguins", "penguins")
 #' mytab <- table(penguins$island, penguins$sex)
-#' computa.ASR(mytab)
+#' extraccio_RAE(mytab)
 extraccio_RAE <- function(mytab){
 
   df <- mytab # per mantenir referències de codi de chisquare
