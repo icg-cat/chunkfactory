@@ -20,7 +20,7 @@ computa_residusAS <- function(data, VI, VD, pes){
     weights = data[[pes]],
     useNA = "no"
   ) %>%
-    as.data.frame.matrix(.)
+    as.data.frame.matrix()
 
   # computa chisquare
   t2 <- extraccio_RAE(t1) # versió simplificada, només residus ajustats estand.

@@ -21,11 +21,11 @@ aplica_funcio <- function(param){
   # checks integritat dades
   classe_vds <- lapply(param$VD, function(x){
     class(get(param$dades[[1]])[[x]])
-  }) %>% unlist(.)
+  }) %>% unlist()
 
   classe_vis <- lapply(param$VI, function(x){
     class(get(param$dades[[1]])[[x]])
-  }) %>% unlist(.)
+  }) %>% unlist()
 
   if(!(all(classe_vds == "factor") |
      all(classe_vds %in% c("numeric", "integer", "double")))) stop("Les variables dependents no tenen totes la mateixa classe. Cal proporcionar un vector de variables factor o numeric")

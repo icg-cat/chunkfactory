@@ -4,14 +4,14 @@
 \alias{fabrica_chunks_myfunc}
 \title{Turn any custom function into a chunk factory.}
 \usage{
-fabrica_chunks_myfunc(myfunc, param_list, title_level = 3)
+fabrica_chunks_myfunc(myfunc, param_list, sections = "3")
 }
 \arguments{
 \item{myfunc}{custom function you'd like to execute. Data arguments need to be treated as character strings. See example.}
 
 \item{param_list}{list of parameters needed by the function. Need to be specified with the same names, in the same order as the function arguments.}
 
-\item{title_level}{level of the titles for the sections. Defaults to Header 3}
+\item{sections}{level of the titles for the sections. Defaults to Header 3}
 }
 \value{
 a character string containing the markdown generating the document sections  (under a title 3), the chunks and the code to be rendered by the .rmd document.
@@ -29,5 +29,5 @@ myfunc <- function(data_name, v1){
   return(list(res1, res2, res3))
 }
 myfunc_params <- list(data_name = "penguins", v1 = c("species", "island", "sex"))
-fabrica_chunks_myfunc(myfunc, myfunc_params)
+fabrica_chunks_myfunc(myfunc, myfunc_params, sections = "1")
 }

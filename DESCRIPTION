@@ -1,7 +1,7 @@
 Package: chunkfactory
 Type: Package
 Title: The package `chunkfactory`is meant to facilitate the production of documents for the exploration of bivariate descriptive statistics 
-Version: 1.2.0
+Version: 2.0.0
 Author: Irene Cruz Gómez
 Maintainer: <irene.cruz@institutmetropoli.cat>
 Description: Thepackage solves 2 issues related to working iteratively witin markdown documents: a) repetitive code, and b) presenting figures when repeating functions on a list.
@@ -10,18 +10,21 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
 Imports: 
-    chisquare,
     dplyr,
-    ggplot2,
     glue,
-    Hmisc,
     knitr,
     magrittr,
     methods,
-    palmerpenguins,
     purrr,
     questionr,
+    rlang,
     tidyr,
     tidyselect
 URL: https://github.com/icg-cat/chunkfactory
 BugReports: https://github.com/icg-cat/chunkfactory/issues
+Suggests: 
+    chisquare,
+    ggplot2,
+    Hmisc,
+    palmerpenguins,
+    sjPlot
