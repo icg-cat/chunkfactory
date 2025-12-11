@@ -103,7 +103,7 @@ Now we're ready to execute our custom function with our list of parameters:
 myres <- fabrica_chunks_myfunc(
   myfunc = myfunc, 
   param_list = myfunc_params, 
-  title_level = 2)
+  sections = "2")
 ```
 
 The list of results is then interpreted by knit_child():
