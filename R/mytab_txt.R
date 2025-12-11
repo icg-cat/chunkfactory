@@ -14,7 +14,7 @@
 mytab_txt <- function(dades, VI, VD, pes){
   # browser()
   tau <- glue::glue(
-    'tb <- mycrosstab({dades}, "{VI}", "{VD}", "{pes}")
+    'tb <- chunkfactory:::mycrosstab({dades}, "{VI}", "{VD}", "{pes}")
     tb'
   )
 
