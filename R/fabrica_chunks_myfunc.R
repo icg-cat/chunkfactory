@@ -21,9 +21,9 @@
 fabrica_chunks_myfunc <- function(myfunc, param_list, sections = "3"){
 
   sections <- dplyr::case_when(
-    sections == "3" ~ "  ### {{tab_name}}\n",
-    sections == "2" ~ "  ## {{tab_name}}\n",
-    sections == "1" ~ "  # {{tab_name}}\n",
+    sections == "3" ~ "### {{tab_name}}\n",
+    sections == "2" ~ "## {{tab_name}}\n",
+    sections == "1" ~ "# {{tab_name}}\n",
     .default = sections
   )
 
@@ -32,7 +32,6 @@ fabrica_chunks_myfunc <- function(myfunc, param_list, sections = "3"){
   .chunkify(reslist, sections)
 
 }
-
 
 #' make reslist structure for fabrica_chunks_myfunc
 #'
